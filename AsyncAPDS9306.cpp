@@ -63,7 +63,7 @@ int AsyncAPDS9306Data::_gainValue(APDS9306_ALS_GAIN_t again) {
 
 AsyncAPDS9306::AsyncAPDS9306() {}
 
-bool AsyncAPDS9306::begin(APDS9306_ALS_GAIN_t again = APDS9306_ALS_GAIN_1, APDS9306_ALS_MEAS_RES_t atime = APDS9306_ALS_MEAS_RES_16BIT_25MS) {
+bool AsyncAPDS9306::begin(APDS9306_ALS_GAIN_t again, APDS9306_ALS_MEAS_RES_t atime) {
   Wire.begin();
 
   int partId = _readRegister(APDS9306_CMD_PART_ID);
@@ -153,13 +153,13 @@ uint32_t AsyncAPDS9306::_read24() {
   return result;
 }
 
-int AsyncAPDS9306::_write(uint8_t reg, bool i2cStopMessage  = true) {
+int AsyncAPDS9306::_write(uint8_t reg, bool i2cStopMessage) {
   Wire.beginTransmission(APDS9306_I2C_ADDRESS);
   Wire.write(reg);
   return Wire.endTransmission(i2cStopMessage);
 }
 
-int AsyncAPDS9306::_writeValue(uint8_t reg, uint8_t value, bool i2cStopMessage  = true) {
+int AsyncAPDS9306::_writeValue(uint8_t reg, uint8_t value, bool i2cStopMessage) {
   Wire.beginTransmission(APDS9306_I2C_ADDRESS);
   Wire.write(reg);
   Wire.write(value);
