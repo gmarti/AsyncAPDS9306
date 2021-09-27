@@ -48,6 +48,7 @@ float AsyncAPDS9306Data::_integrationTime(APDS9306_ALS_MEAS_RES_t atime) {
     case APDS9306_ALS_MEAS_RES_17BIT_50MS : return 50.0;
     case APDS9306_ALS_MEAS_RES_16BIT_25MS : return 25.0;
     case APDS9306_ALS_MEAS_RES_13BIT_3MS : return 3.125;
+    default : return -1.0;
   }
 }
 int AsyncAPDS9306Data::_gainValue(APDS9306_ALS_GAIN_t again) {
@@ -57,6 +58,7 @@ int AsyncAPDS9306Data::_gainValue(APDS9306_ALS_GAIN_t again) {
     case APDS9306_ALS_GAIN_6 : return 6;
     case APDS9306_ALS_GAIN_9 : return 9;
     case APDS9306_ALS_GAIN_18 : return 18;
+    default : return -1.0;
   }
 }
 
